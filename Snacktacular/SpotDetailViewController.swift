@@ -45,12 +45,13 @@ class SpotDetailViewController: UIViewController {
     func updateUserInterface() {
         nameField.text = spot.name
         addressField.text = spot.address
+        updateMap()
     }
     
     func updateMap() {
-        mapView.removeAnnotation(mapView?.annotations as! MKAnnotation)
+        mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(spot)
-        updateMap()
+        mapView.setCenter(spot.coordinate, animated: true)
     }
     
     func leaveViewController() {
